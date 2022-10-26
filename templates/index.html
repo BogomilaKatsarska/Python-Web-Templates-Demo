@@ -1,0 +1,46 @@
+{% extends 'base/base.html' %}
+{#The name of the file#}
+{% load filters %}
+{% load tags %}
+{% block page_content %}
+{{csrf_token}}
+<h1>
+{{ values|odd }}
+</h1>
+<h1>
+    {{ title|upper }} : {{ value }}
+</h1>
+{{ info.address }}
+{{ student.get_info }}
+    <div>
+{{ students|join:', ' }}
+    </div>
+{% if students %}
+{{ students|join:', ' }}
+{% else %}
+NO students
+{% endif %}
+
+<div>
+    {% for student in students %}
+        <li>{{ student }}</li>
+        {% empty %}
+        <li>No students:)</li>
+    {% endfor %}
+</div>
+<h2>
+    {{ now}}
+    <h1>
+    {{ now|app_style }}
+        </h1>
+    <h1>
+        {% student_info student %}
+        {% sample_tag %}
+        {% sample_tag 17 'Doncho' True %}
+    </h1>
+</h2>
+{#comment CTRL+/ #}
+</body>
+</html>
+
+{% endblock %}
